@@ -7,10 +7,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.IBinder
 import androidx.work.Constraints
+import androidx.work.ExistingPeriodicWorkPolicy
 import androidx.work.ExistingWorkPolicy
 import androidx.work.NetworkType.CONNECTED
 import androidx.work.OneTimeWorkRequest
 import androidx.work.OneTimeWorkRequestBuilder
+import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkManager
 import ru.otus.android.finish.services.BackgroundService
 import ru.otus.android.finish.services.BoundService
@@ -19,6 +21,7 @@ import ru.otus.android.finish.services.ForegroundService
 import ru.otus.android.finish.works.NotifyWorker
 import ru.otus.android.finish.works.UploadWorker
 import ru.otus.android.service.databinding.ActivityMainBinding
+import java.util.concurrent.TimeUnit
 
 class MainActivity : AppCompatActivity() {
 
@@ -77,23 +80,47 @@ class MainActivity : AppCompatActivity() {
 //                )
 
             // 3
-            val uploadRequest = OneTimeWorkRequest.from(UploadWorker::class.java)
-            val notifyRequest = OneTimeWorkRequestBuilder<NotifyWorker>()
-                .setConstraints(
-                    Constraints.Builder()
-                        .setRequiredNetworkType(CONNECTED)
-                        .build()
-                )
-                .build()
+//            val uploadRequest = OneTimeWorkRequest.from(UploadWorker::class.java)
+//            val notifyRequest = OneTimeWorkRequest.from(NotifyWorker::class.java)
+//            WorkManager.getInstance(this)
+//                .beginUniqueWork(
+//                    "uploadWork",
+//                    ExistingWorkPolicy.REPLACE,
+//                    uploadRequest,
+//                )
+//                .then(notifyRequest)
+//                .enqueue()
 
-            WorkManager.getInstance(this)
-                .beginUniqueWork(
-                    "uploadWork",
-                    ExistingWorkPolicy.REPLACE,
-                    uploadRequest,
-                )
-                .then(notifyRequest)
-                .enqueue()
+            // 4
+//            val uploadRequest = OneTimeWorkRequest.from(UploadWorker::class.java)
+//            val notifyRequest = OneTimeWorkRequestBuilder<NotifyWorker>()
+//                .setConstraints(
+//                    Constraints.Builder()
+//                        .setRequiredNetworkType(CONNECTED)
+//                        .build()
+//                )
+//                .build()
+//
+//            WorkManager.getInstance(this)
+//                .beginUniqueWork(
+//                    "uploadWork",
+//                    ExistingWorkPolicy.REPLACE,
+//                    uploadRequest,
+//                )
+//                .then(notifyRequest)
+//                .enqueue()
+
+            // 5
+//            val uploadRequest =
+//                PeriodicWorkRequestBuilder<UploadWorker>(15, TimeUnit.MINUTES)
+//                    .build()
+//
+//            WorkManager.getInstance(this)
+//                .enqueueUniquePeriodicWork(
+//                    "uploadWork",
+//                    ExistingPeriodicWorkPolicy.KEEP,
+//                    uploadRequest
+//                )
         }
     }
 
