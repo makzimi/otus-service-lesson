@@ -34,7 +34,7 @@
 
     <activity
         android:exported="true"
-        android:name="ru.otus.android.finish.MainActivity">
+        android:name="ru.otus.android.start.MainActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
 
