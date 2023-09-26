@@ -18,7 +18,9 @@
 
     <service
         android:exported="false"
-        android:name="ru.otus.android.finish.services.UploadService"/>
+        android:name="ru.otus.android.finish.services.SeparateService"
+        android:process=":externalProcess"
+        />
 
     <service
         android:exported="false"
