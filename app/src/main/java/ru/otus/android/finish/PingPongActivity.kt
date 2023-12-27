@@ -10,6 +10,7 @@ import android.os.Looper
 import android.os.Message
 import android.os.Messenger
 import android.os.RemoteException
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import ru.otus.android.finish.services.SeparateService
 import ru.otus.android.service.databinding.ActivityMainBinding
@@ -31,6 +32,7 @@ class PingPongActivity : AppCompatActivity() {
                 msg.replyTo = mMessenger
                 mService!!.send(msg)
             } catch (e: RemoteException) {
+                Log.e("PingPongActivity", "Can not send message to serivce")
             }
         }
 
@@ -43,8 +45,7 @@ class PingPongActivity : AppCompatActivity() {
     val mMessenger = Messenger(
         IncomingHandler(
             onMessage = { message ->
-                binding.history.text = binding.history.text.toString() +
-                        "\nPong: $message"
+                binding.history.text = "${binding.history.text}\nPong: $message"
             }
         )
     )
@@ -76,7 +77,7 @@ class PingPongActivity : AppCompatActivity() {
                 0,
             )
             msg.replyTo = mMessenger
-            binding.history.text = binding.history.text.toString() + "\nPing: $pingValue"
+            binding.history.text = "${binding.history.text}\nPing: $pingValue"
 
             mService?.send(msg)
         }

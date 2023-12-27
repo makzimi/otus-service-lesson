@@ -25,10 +25,9 @@ class SeparateService: Service() {
         return mMessenger.binder
     }
 
-    val mMessenger: Messenger = Messenger(IncomingHandler())
+    private val mMessenger: Messenger = Messenger(IncomingHandler())
 
     var mClients = ArrayList<Messenger>()
-
     var mValue = 0
 
     inner class IncomingHandler : Handler(Looper.getMainLooper()) {
