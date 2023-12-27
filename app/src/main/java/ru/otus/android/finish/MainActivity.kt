@@ -64,6 +64,12 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        binding.tryIPC.setOnClickListener {
+            Intent(this, PingPongActivity::class.java).also { intent ->
+                startActivity(intent)
+            }
+        }
+
         binding.startWork.setOnClickListener {
             // 1
 //            val uploadRequest = OneTimeWorkRequest.from(UploadWorker::class.java)

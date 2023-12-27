@@ -35,6 +35,12 @@
         android:name="ru.otus.android.finish.services.BoundService"/>
 
     <activity
+        android:name="ru.otus.android.finish.PingPongActivity"/>
+
+    <activity
+        android:name="ru.otus.android.start.PingPongActivity"/>
+
+    <activity
         android:exported="true"
         android:name="ru.otus.android.start.MainActivity">
       <intent-filter>

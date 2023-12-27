@@ -33,6 +33,14 @@
       />
 
   <Button
+      android:id="@+id/tryIPC"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_margin="10dp"
+      android:text="Try IPC"
+      />
+
+  <Button
       android:id="@+id/startWork"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"

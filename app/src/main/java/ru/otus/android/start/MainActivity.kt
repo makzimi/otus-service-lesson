@@ -1,5 +1,6 @@
 package ru.otus.android.start
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import ru.otus.android.service.databinding.ActivityMainBinding
@@ -19,6 +20,10 @@ class MainActivity : AppCompatActivity() {
         binding.startForeground.setOnClickListener { }
 
         binding.startBound.setOnClickListener { }
+
+        binding.tryIPC.setOnClickListener {
+            startActivity(Intent(this, PingPongActivity::class.java))
+        }
 
         binding.startWork.setOnClickListener { }
     }
